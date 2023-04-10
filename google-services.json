@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "588448057990",
+    "project_id": "hw6-react-native",
+    "storage_bucket": "hw6-react-native.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:588448057990:android:7fd0274b416aeeb2521f07",
+        "android_client_info": {
+          "package_name": "hw6reactnative.firebaseapp.com"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "588448057990-39ftcisfibp4ao41isl7b1lr237iu3li.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCvVz3-E1fe1hHWq1VuXa7xS_rDb_Oxj9A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "588448057990-39ftcisfibp4ao41isl7b1lr237iu3li.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
