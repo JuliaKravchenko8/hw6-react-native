@@ -7,6 +7,7 @@ import {
   TextInput,
   TouchableOpacity,
   Image,
+  Button,
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { Camera } from 'expo-camera';
@@ -25,6 +26,22 @@ export default function CreatePostsScreen({ navigation }) {
 
   const { userId, login } = useSelector(state => state.auth);
 
+  useEffect(() => {
+    (async () => {
+      let { status } = await Location.requestForegroundPermissionsAsync();
+      if (status !== 'granted') {
+        console.log('Permission to access location was denied');
+      }
+
+      let location = await Location.getCurrentPositionAsync({});
+      const coords = {
+        latitude: location.coords.latitude,
+        longitude: location.coords.longitude,
+      };
+      setLocation(coords);
+    })();
+  }, []);
+
   const takePhoto = async () => {
     const photos = await camera.takePictureAsync();
     setPhoto(photos.uri);
@@ -37,11 +54,15 @@ export default function CreatePostsScreen({ navigation }) {
 
   const uploadPostToServer = async () => {
     const photo = await uploadPhotoToServer();
+    let locationCoords = '';
+    if (location && location.coords) {
+      locationCoords = location.coords;
+    }
     const createPost = await addDoc(collection(db, 'posts'), {
       photo,
       title,
       locationName,
-      location: location.coords,
+      location: locationCoords,
       userId,
       login,
     });
@@ -57,19 +78,6 @@ export default function CreatePostsScreen({ navigation }) {
     console.log(downloadPhoto);
     return downloadPhoto;
   };
-
-  useEffect(() => {
-    (async () => {
-      let { status } = await Location.requestForegroundPermissionsAsync();
-      if (status !== 'granted') {
-        setErrorMsg('Permission to access location was denied');
-        return;
-      }
-
-      let location = await Location.getCurrentPositionAsync({});
-      setLocation(location);
-    })();
-  }, []);
 
   let text = 'Waiting..';
   if (errorMsg) {
