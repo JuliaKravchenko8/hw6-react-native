@@ -9,13 +9,16 @@ export default function MapScreen({ route }) {
       <MapView
         style={styles.map}
         initialRegion={{
-          latitude: latitude,
-          longitude: longitude,
+          latitude: 48.9731,
+          longitude: 23.9836,
           latitudeDelta: 0.01,
           longitudeDelta: 0.06,
         }}
       >
-        <Marker coordinate={{ latitude, longitude }} title="travel photo" />
+        <Marker
+          coordinate={{ latitude: 48.9731, longitude: 23.9836 }}
+          title="travel photo"
+        />
       </MapView>
     </View>
   );

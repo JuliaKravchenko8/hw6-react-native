@@ -20,7 +20,7 @@ export default function CreatePostsScreen({ navigation }) {
   const [camera, setCamera] = useState(null);
   const [photo, setPhoto] = useState('');
   const [location, setLocation] = useState(null);
-  const [errorMsg, setErrorMsg] = useState(null);
+  const [errorMsg] = useState(null);
   const [title, setTitle] = useState('');
   const [locationName, setLocationName] = useState('');
 
